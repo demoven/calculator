@@ -8,6 +8,7 @@ def client():
     with app.test_client() as client:
         yield client
 
+# Tests pour l'API de la calculatrice
 def test_add_success(client):
     """Teste si l'addition de 10 et 5 renvoie bien 15"""
     response = client.get('/add?a=10&b=5')
