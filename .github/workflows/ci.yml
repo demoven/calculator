@@ -1,0 +1,24 @@
+name: Python CI
+
+on: [push, pull_request] # Se déclenche à chaque push ou PR
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # Utilise un serveur Linux gratuit de GitHub
+
+    steps:
+    - uses: actions/checkout@v3 # Récupère le code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests with Pytest
+      run: |
+        python -m pytest # La fameuse commande que nous avons validée
